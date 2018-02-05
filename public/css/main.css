@@ -2,3 +2,27 @@
   /* border: 1px solid hotpink;
   background-color: #39487f; */
 }
+
+#categoryChips {
+  width: 60%;
+  align-content: center;
+  margin: 0 auto;
+  justify-content: flex-end;
+  padding-top: 5%;
+  float: right;
+}
+
+#currentSearch {
+  padding-top: 14%;
+
+}
+
+li {
+  list-style: none;
+
+}
+.panel {
+  width: 30%;
+  height: 10%;
+  position: inherit;
+}

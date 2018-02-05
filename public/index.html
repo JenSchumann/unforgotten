@@ -5,6 +5,10 @@
     <title>Unforgotten</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
     <link rel="stylesheet" href="./css/main.css">
 
     <!-- Scripts -->
@@ -14,20 +18,71 @@
     <script src="./js/app.js" charset="utf-8"></script>
   </head>
   <body ng-controller="SunkController as lost">
+<div id="categoryChips">
+
+
+    <span class="chip">
+        Name
+        <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+    </span>
+
+    <span class="chip">
+        Passenger Class
+        <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+    </span>
+
+    <span class="chip">
+        Age
+        <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+    </span>
+
+    <span class="chip">
+        Gender
+        <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+    </span>
+
+    <span class="chip">
+        Survival Status
+        <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+    </span>
+
+</div>
 
     <!-- {{lost.ship}} -->
+
+
+
     <div class="search">
-      <h1>Passenger Directory</h1>
+      <h1>Passenger Info</h1>
       <label>Search:</label>
-      <input ng-model="query" placeholder="Search for passenger(s)" autofocus>
+      <input ng-model="query" placeholder="Passenger Search" autofocus>
     </div>
+
+
+<div id="currentSearch">
 
     <script type="text/ng-template" id="treeLevel.html">
       <ul>
-        <li ng-repeat="victim in victims | filter: query">{{victim.text}}
-            <div ng-include=" 'treeLevel.html' "
-            onload="victims = victim.info">
-          </div>
+        <li ng-repeat="victim in victims | filter: query">
+          <div class="panel">
+        <!-- <div class="panel-header"> -->
+          <div class="panel-title">{{victim.text}}</div>
+          <div ng-include=" 'treeLevel.html' "
+          onload="victims = victim.info">
+        <!-- </div> -->
+        </div>
+        <!-- <div class="panel-nav"> -->
+          <!-- navigation components: tabs, breadcrumbs or pagination -->
+        <!-- </div> -->
+        <!-- <div class="panel-body"> -->
+          <!-- contents -->
+
+        <!-- </div> -->
+        <!-- <div class="panel-footer"> -->
+          <!-- buttons or inputs -->
+        <!-- </div> -->
+      <!-- </div> -->
+
         </li>
 
       </ul>
@@ -36,7 +91,7 @@
     </script>
 
 <div ng-include=" 'treeLevel.html' "></div>
-
+</div>
 
 
 
