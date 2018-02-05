@@ -16,11 +16,15 @@
   <body ng-controller="SunkController as lost">
 
     <!-- {{lost.ship}} -->
-
+    <div class="search">
+      <h1>Passenger Directory</h1>
+      <label>Search:</label>
+      <input ng-model="query" placeholder="Search for passenger(s)" autofocus>
+    </div>
 
     <script type="text/ng-template" id="treeLevel.html">
       <ul>
-        <li ng-repeat="victim in victims">{{victim.text}}
+        <li ng-repeat="victim in victims | filter: query">{{victim.text}}
             <div ng-include=" 'treeLevel.html' "
             onload="victims = victim.info">
           </div>
