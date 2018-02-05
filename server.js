@@ -15,9 +15,9 @@ app.get('/', (req, res)=>{
   res.send('iceberg.. straight ahead');
 });
 
-// app.get('/lost', (request, response) => {
-//     response.send('So many were lost that fateful day that the Titanic went down');
-// });
+app.get('/lost', (request, response) => {
+    response.send('So many were lost that fateful day that the Titanic went down');
+});
 
 
 

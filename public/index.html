@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="TitanicApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Unforgotten</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/main.css">
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js">
+    </script>
+
+    <script src="./js/app.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="SunkController as lost">
+
+    <!-- {{lost.ship}} -->
+
+
+    <script type="text/ng-template" id="treeLevel.html">
+      <ul>
+        <li ng-repeat="victim in victims">{{victim.text}}
+            <div ng-include=" 'treeLevel.html' "
+            onload="victims = victim.info">
+          </div>
+        </li>
+
+      </ul>
+
+
+    </script>
+
+<div ng-include=" 'treeLevel.html' "></div>
+
+
+
+
+  </body>
+</html>
