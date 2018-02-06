@@ -11,7 +11,7 @@ const app = angular.module('TitanicApp', []);
 app.controller('SunkController', ['$http', '$scope', function($http, $scope){
   const controller = this;
   this.ship = "Why didn't they pull more souls from the water?";
-  
+
   $scope.victims = [
     // {
     //   text: "first and last name",
@@ -475,6 +475,93 @@ app.controller('SunkController', ['$http', '$scope', function($http, $scope){
       ]
     },
 
+    {
+      text: "Karl Howell Behr",
+      info: [
+        {
+          text: "1st"
+        },
+        {
+          text: "26",
+        },
+        {
+          text: "male",
+          info: [
+            { text: "0" },
+            { text: "Mr"},
+          ]
+        },
+        {
+          text: "1"
+        },
+      ]
+    },
+
+    {
+      text: "Jakob Birnbaum",
+      info: [
+        {
+          text: "1st"
+        },
+        {
+          text: "25",
+        },
+        {
+          text: "male",
+          info: [
+            { text: "0" },
+            { text: "Mr"},
+          ]
+        },
+        {
+          text: "0"
+        },
+      ]
+    },
+
+    {
+      text: "Dickinson H Bishop",
+      info: [
+        {
+          text: "1st"
+        },
+        {
+          text: "25",
+        },
+        {
+          text: "male",
+          info: [
+            { text: "0" },
+            { text: "Mr"},
+          ]
+        },
+        {
+          text: "1"
+        },
+      ]
+    },
+
+    {
+      text: "Helen Walton Bishop",
+      info: [
+        {
+          text: "1st"
+        },
+        {
+          text: "19",
+        },
+        {
+          text: "female",
+          info: [
+            { text: "1" },
+            { text: "Mrs"},
+          ]
+        },
+        {
+          text: "1"
+        },
+      ]
+    },
 
   ]
 
