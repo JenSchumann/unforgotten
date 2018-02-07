@@ -42,7 +42,7 @@
     </span>
 
     <span class="chip">
-        Survival Status
+        Survivor
         <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
     </span>
 
@@ -52,48 +52,91 @@
 
 
 
-    <div class="search">
+
       <h1>Passenger Info</h1>
+      <br><hr><br>
+      <div class="search">
       <label>Search:</label>
       <input ng-model="query" placeholder="Passenger Search" autofocus>
-    </div>
+    </div><br>
 
 
-<div id="currentSearch">
+    <aside class="left">
+      <!-- <div> -->
+        <div ng-repeat="(prop, ignored) in lost.victimsList[0]" ng-init="lost.filter[prop] = {}">
+<h4>{{ prop }}</h4>
+        <div class="victimNames" ng-repeat="value in lost.getValuesFor(prop)">
+          <label>
+          <input type="checkbox" ng-model="lost.filter[prop][value]"/>
+          {{value}}
+        </label>
 
-    <script type="text/ng-template" id="treeLevel.html">
-      <ul>
-        <li ng-repeat="victim in victims | filter: query">
-          <div class="panel">
-        <!-- <div class="panel-header"> -->
-          <div class="panel-title">{{victim.text}}</div>
-          <div ng-include=" 'treeLevel.html' "
-          onload="victims = victim.info">
-        <!-- </div> -->
         </div>
-        <!-- <div class="panel-nav"> -->
-          <!-- navigation components: tabs, breadcrumbs or pagination -->
-        <!-- </div> -->
-        <!-- <div class="panel-body"> -->
-          <!-- contents -->
+        <hr>
+        </div>
+
+
 
         <!-- </div> -->
-        <!-- <div class="panel-footer"> -->
-          <!-- buttons or inputs -->
-        <!-- </div> -->
-      <!-- </div> -->
-
-        </li>
-
-      </ul>
+        <!-- <input type="checkbox" ng-click="fullName" name="Full Name" value="Full Name"><h5 class="d-inline-flex">Full Name</h5><br>
+        <input type="checkbox" name="Miss" value="Miss"><h5 class="d-inline-flex">Miss</h5><br>
+        <input type="checkbox" name="Miss" value="Mrs"><h5 class="d-inline-flex">Mrs</h5><br>
+        <input type="checkbox" name="Miss" value="Master"><h5 class="d-inline-flex">Master</h5><br>
+        <input type="checkbox" name="Miss" value="Mr"><h5 class="d-inline-flex">Mr</h5><br>
+        <input type="checkbox" name="Miss" value="Military Rank"><h5 class="d-inline-flex">Military Rank</h5><br> -->
 
 
-    </script>
+      <hr>
+      <div>Passenger Class</div><hr>
+      <div>Age</div><hr>
+      <div>Gender</div><hr>
+      <div>Survivor</div>
+    </aside>
 
+    <div id="currentSearch" class="container">
+
+        <h3>Passenger Names</h3>
+        <div ng-repeat="victimsList in (lost.victimsList | filter:lost.filterByProperties) as filteredVictimsList">
+          {{ victimsList.name }} <i>({{ victimsList.title }})</i>
+
+        </div>
+        <hr>
+        <b>Number of Results: {{ filteredVictimsList.length }}</b>
+    </div>
+      <!-- <div class="columns">
+    <fieldset>
+  <table class="table table-striped table-hover table-scroll">
+
+
+
+  <tbody>
+     <script type="text/ng-template" id="treeLevel.html">
+        <ul><td>
+            <div class="column-oneline col-2-oneline"><li class="d-inline-flex" ng-repeat="victim in victims | filter: query">{{victim.text}}<span id="columnData" ng-include=" 'treeLevel.html' "
+            onload="victims = victim.info"></span></div><br>
+
+
+  </li>
+
+  <li class="d-inline-flex" ng-repeat="victim in victims | filter: fullName">{{victim.text}}</li>
+</td>
+
+</ul>
+
+</script>
+ </tr> -->
+
+
+
+<!-- </tbody>
+
+</table>
 <div ng-include=" 'treeLevel.html' "></div>
+
+</fieldset>
 </div>
 
-
+</div> -->
 
   </body>
 </html>
