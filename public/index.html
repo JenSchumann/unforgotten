@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <title>Unforgotten</title>
 
+    <!-- Favicon  -->
+    <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon.ico">
+
     <!-- Styles -->
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
@@ -18,40 +22,38 @@
     <script src="./js/app.js" charset="utf-8"></script>
   </head>
   <body ng-controller="SunkController as lost">
-<div id="categoryChips">
+
+      <div id="categoryChips">
 
 
-    <span class="chip">
-        Name
-        <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
-    </span>
+            <span class="chip">
+                Name
+                <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+            </span>
 
-    <span class="chip">
-        Passenger Class
-        <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
-    </span>
+            <span class="chip">
+                Passenger Class
+                <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+            </span>
 
-    <span class="chip">
-        Age
-        <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
-    </span>
+            <span class="chip">
+                Age
+                <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+            </span>
 
-    <span class="chip">
-        Gender
-        <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
-    </span>
+            <span class="chip">
+                Gender
+                <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+            </span>
 
-    <span class="chip">
-        Survivor
-        <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
-    </span>
+            <span class="chip">
+                Survivor
+                <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+            </span>
 
-</div>
+      </div>
 
     <!-- {{lost.ship}} -->
-
-
-
 
       <h1>Passenger Info</h1>
       <br><hr><br>
@@ -59,7 +61,6 @@
       <label>Search:</label>
       <input ng-model="query" placeholder="Passenger Search" autofocus>
     </div><br>
-
 
     <aside class="left">
       <!-- <div> -->
@@ -85,9 +86,10 @@
 
     <div id="currentSearch" class="container">
 
-        <h3>Passenger Names</h3>
+        <h3>Passenger Information:</h3>
         <div ng-repeat="victimsList in (lost.victimsList | filter:lost.filterByProperties) as filteredVictimsList">
-          {{ victimsList.name }} <i>({{ victimsList.title }})</i>
+          {{ victimsList.name }}
+          <i>({{ victimsList.title }})</i>
 
         </div>
         <hr>

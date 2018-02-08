@@ -16,3 +16,6 @@
 - [ ] Removable "chips" which serve as filterable categories which comprise the Titanic passenger data.
 
 - [ ] Category "chips" which display a count of items matching each value in that category.
+
+possible background image:
+https://t4.ftcdn.net/jpg/01/08/85/39/240_F_108853929_Qp6JGavonaOajSYyXwLZhpjgG2Hwz7hG.jpg
