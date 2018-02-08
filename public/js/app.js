@@ -8,10 +8,13 @@ const app = angular.module('TitanicApp', []);
 
 ////////////////////////////////////////////////////////////
 
+
 app.controller('SunkController', ['$http', '$scope', function($http, $scope){
   const controller = this;
   this.ship = "Why didn't they pull more souls from the water?";
   this.filter = {};
+
+
 
   //I usually store data in a model file
   $scope.victims = [
@@ -563,139 +566,25 @@ app.controller('SunkController', ['$http', '$scope', function($http, $scope){
               text: "1"
             },
           ]
-        },
-
-    {
-      text: "Mauritz Hakan Bjornstrm-Steffansson",
-      info: [
-        {
-          text: "1st"
-        },
-        {
-          text: "28",
-        },
-        {
-          text: "male",
-
-        },
-        {
-          text: "Yes"
-        },
-      ]
-    },
-
-    {
-      text: "Stephen Weart Blackwell",
-      info: [
-        {
-          text: "1st"
-        },
-        {
-          text: "45",
-        },
-        {
-          text: "male",
-
-        },
-        {
-          text: "No"
-        },
-      ]
-    },
-
-    {
-      text: "Henry Blank",
-      info: [
-        {
-          text: "1st"
-        },
-        {
-          text: "39",
-        },
-        {
-          text: "male",
-
-        },
-        {
-          text: "Yes"
-        },
-      ]
-    },
-
-    {
-      text: "Caroline Bonnell",
-      info: [
-        {
-          text: "1st"
-        },
-        {
-          text: "30",
-        },
-        {
-          text: "female",
-
-        },
-        {
-          text: "Yes"
-        },
-      ]
-    },
-
-
+        }
 
   ]
 
   this.victimsList = [
-    {name: [{first: 'a', last: 'aa', maiden: 'aaa', title: 'mrs'}], class: '1st', age: 2, gender: 'female', survivor: 'no'},
+    {Name: [{first: 'a', last: 'aa', maiden: 'aaa', title: 'mrs'}], Class: '1st', Age: 2, Gender: 'female', Survivor: 'no'},
 
-    {name: [{first: 'b', last: 'bb', maiden: 'bbb', title: 'mr'}], class: '2nd', age: 19, gender: 'male', survivor: 'yes'},
+    {Name: [{first: 'b', last: 'bb', maiden: 'bbb', title: 'mr'}], Class: '2nd', Age: 19, Gender: 'male', Survivor: 'yes'},
 
-    {name: [{first: 'c', last: 'cc', maiden: 'ccc', title: 'miss'}], class: '3rd', age: 46, gender: 'female', survivor: 'no'},
+    {Name: [{first: 'c', last: 'cc', maiden: 'ccc', title: 'miss'}], Class: '3rd', Age: 46, Gender: 'female', Survivor: 'no'},
 
-    {name: [{first: 'd', last: 'dd', maiden: 'ddd', title: 'master'}], class: '1st', age: 67, gender: 'male', survivor: 'yes'},
+    {Name: [{first: 'd', last: 'dd', maiden: 'ddd', title: 'master'}], Class: '1st', Age: 67, Gender: 'male', Survivor: 'yes'},
 
-    {name: [{first: 'e', last: 'ee', maiden: 'eee', title: 'miss'}], class: '2nd', age: 34, gender: 'female', survivor: 'no'},
+    {Name: [{first: 'e', last: 'ee', maiden: 'eee', title: 'miss'}], Class: '2nd', Age: 34, Gender: 'female', Survivor: 'no'},
 
-    {name: [{first: 'f', last: 'ff', maiden: 'fff', title: 'colonel'}], class: '3rd', age: 22, gender: 'male', survivor: 'yes'}
-
-    // {name: 'b', title: 'mr', class: '2nd', age: 19, gender: 'female', survivor: 'no'},
-    // {name: 'c', title: 'miss', class: '3rd', age: 46, gender: 'male', survivor: 'yes'},
-    // {name: 'd', title: 'master', class: '1st', age: 67, gender: 'female', survivor: 'no'},
-    // {name: 'e', title: 'colonel', class: '2nd', age: 34, gender: 'male', survivor: 'yes'},
-    // {name: 'f', title: 'miss', class: '3rd', age: 22, gender: 'female', survivor: 'no'},
+    {Name: [{first: 'f', last: 'ff', maiden: 'fff', title: 'colonel'}], Class: '3rd', Age: 22, Gender: 'male', Survivor: 'yes'}
   ]
 
-  app.filter('objectByKeyValFilter', function () {
-    return function (input, filterKey, filterVal) {
 
-        var filteredInput = [];
-
-        var ContainsKeyValue = function (obj, key, value) {
-            if (obj[key] === value) return true;
-            for (var all in obj) {
-                if (obj[all] != null && obj[all][key] === value) {
-                    return true;
-                }
-                if (typeof obj[all] == "object" && obj[all] != null) {
-                    var found = ContainsKeyValue(obj[all], key, value);
-                    if (found == true) return true;
-                }
-            }
-            return false;
-        };
-
-        for (var items in input) {
-            if (ContainsKeyValue(input[items], filterKey, filterVal) === true) {
-                filteredInput.push(input[items]);
-            }
-        }
-        return filteredInput;
-    }
-});
-
-// Strict filter for comparing objects like "give me all users having rank with id 1":
-// {{ user in users | strictFilter:{ranks: [{id: 1}]} }}
-// Standart filter will return also users having ranks with id 10, 12 or 100500
 app.filter('strictRecurrentFilter', function($filter) {
   var strictComparator; // Very strict comparator to get very strict results
   strictComparator = function(actual, expected) {
@@ -734,7 +623,8 @@ app.filter('strictRecurrentFilter', function($filter) {
 
   this.getValuesFor = function(prop) {
     return (this.victimsList || []).map(function (victimsList) {
-      return victimsList[prop]}).filter(function (value, idx, arr) { return arr.indexOf(value) === idx; });
+      return victimsList[prop]}).filter(function (value, idx, arr) {
+        return arr.indexOf(value) === idx; });
     }
 
     function noFilter(filterObj) {
@@ -742,7 +632,8 @@ app.filter('strictRecurrentFilter', function($filter) {
         return !filterObj[key];
       });
     }
-  // }
+
+
 
 
 }]); //end of SunkController
