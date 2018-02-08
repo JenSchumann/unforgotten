@@ -28,68 +28,93 @@
 
             <span class="chip">
                 Name
-                <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+                <a href="#" ng-click="lost.toggleNameChip();" class="btn btn-clear" aria-label="Close" role="button"></a>
             </span>
 
             <span class="chip">
                 Passenger Class
-                <a href="#" class="btn btn-clear"aria-label="Close" role="button"></a>
+                <a href="#" ng-click="lost.toggleClassChip();" class="btn btn-clear"aria-label="Close" role="button"></a>
             </span>
 
             <span class="chip">
                 Age
-                <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+                <a href="#" ng-click="lost.toggleAgeChip();" class="btn btn-clear" aria-label="Close" role="button"></a>
             </span>
 
             <span class="chip">
                 Gender
-                <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+                <a href="#" ng-click="lost.toggleGenderChip();" class="btn btn-clear" aria-label="Close" role="button"></a>
             </span>
 
             <span class="chip">
                 Survivor
-                <a href="#" class="btn btn-clear" aria-label="Close" role="button"></a>
+                <a href="#" ng-click="lost.toggleSurvivorChip();" class="btn btn-clear" aria-label="Close" role="button"></a>
             </span>
 
       </div>
 
+      <h1 class="siteTitle">Titanic</h1><br>
+      <h1 class="siteTitle">Passenger Info</h1>
+      <br><br>
+      <hr>
 
-      <h1>Passenger Info</h1>
-
-            <br><hr><br>
-
-
-
-
-    <aside class="left">
+      <aside class="left">
 
         <div ng-repeat="(prop, ignored) in lost.victimsList[0]" ng-init="lost.filter[prop] = {}">
-<h4>{{ prop }}</h4>
-        <div class="victimNames" ng-repeat="value in lost.getValuesFor(prop)">
-          <label>
-          <input type="checkbox" ng-model="lost.filter[prop][value]"/>
-          {{value}} <span>({{ filteredVictimsList.length }})</span>
-        </label>
+          <!-- this is where i need to hide the Name prop -->
+          <!-- <h4 ng-hide="{{not sure what to grab here.. tried multiple props[4]..etc.}}"> -->
+          <h4 ng-click="lost.toggleView()">
+            {{ prop }} <span>({{ filteredVictimsList.length }})</span></h4>
+            <div class="victimNames" id="propDisplay" ng-repeat="value in lost.getValuesFor(prop)">
+              <label>
+                <input type="checkbox" ng-model="lost.filter[prop][value]"/>
+                {{value}}
+              </label>
 
+            </div>
+            <hr>
         </div>
-        <hr>
-        </div>
+
+      </aside>
 
 
+      <div class="tableTitle">
+      <h3>Passenger Information</h3><h4>Number of Results: {{ filteredVictimsList.length }}</h4>
+      </div>
 
-    </aside>
+      <div id="currentSearch" class="container">
+        <div class="columns">
+              <table class="table table-striped table-hover table-scroll">
 
-    <div id="currentSearch" class="container">
+              <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Class</th>
+                      <th>Age</th>
+                      <th>Gender</th>
+                      <th>Survivor</th>
+                    </tr>
+              </thead>
 
-        <h3>Passenger Information:</h3>
-        <div ng-repeat="victimsList in (lost.victimsList | filter:lost.filterByProperties) as filteredVictimsList">
-          {{ victimsList.Name[0].first + " " + victimsList.Name[0].last }}
-          <!-- <i>({{ victimsList.title }})</i> -->
+              <tbody>
+                <tr ng-repeat="victimsList in (lost.victimsList | filter:lost.filterByProperties) as filteredVictimsList">
 
-        </div>
-        <hr>
-        <b>Number of Results: {{ filteredVictimsList.length }}</b>
-    </div>
+                        <td class="column col-3 col-mr-auto" id="displayName">{{ victimsList.Name[0].first + " " + victimsList.Name[0].last }}</td>
+                        <td class="column col-1" id="displayClass">{{ victimsList.Class }}</td>
+                        <td class="column col-1" id="displayAge">{{ victimsList.Age }}</td>
+                        <td class="column col-2" id="displayGender">{{ victimsList.Gender }}</td>
+                        <td class="column col-2" id="displaySurvival">{{ victimsList.Survivor }}</td>
+
+                      <br>
+
+                </tr>
+          </div>
+              </tbody>
+
+            </table>
+      </div>
+
+
 
 
   </body>

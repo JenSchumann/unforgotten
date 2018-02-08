@@ -9,581 +9,55 @@ const app = angular.module('TitanicApp', []);
 ////////////////////////////////////////////////////////////
 
 
-app.controller('SunkController', ['$http', '$scope', function($http, $scope){
+app.controller('SunkController', ['$scope', function($scope){
   const controller = this;
-  this.ship = "Why didn't they pull more souls from the water?";
+  // this.ship = "Why didn't they pull more souls from the water?";
   this.filter = {};
+  this.toggleView = function(){
+    //this hides value for Class not name.. troubleshooting
+    // const hideView = document.getElementById("propDisplay").style.visibility = "hidden";
+    //
+  }
+
+  this.toggleNameChip = function(){
+    document.getElementById("displayName").style.visibility = "hidden";
+  }
+
+  this.toggleClassChip = function(){
+    document.getElementById("displayClass").style.visibility = "hidden";
+  }
+
+  this.toggleAgeChip = function(){
+    document.getElementById("displayAge").style.visibility = "hidden";
+  }
+
+  this.toggleGenderChip = function(){
+    document.getElementById("displayGender").style.visibility = "hidden";
+  }
+
+  this.toggleSurvivorChip = function(){
+    document.getElementById("displaySurvival").style.visibility = "hidden";
+  }
 
 
-
-  //I usually store data in a model file
-  $scope.victims = [
-    // {
-    //   text: "first and last name",
-    //   info: [
-    //     {
-    //       text: "PClass"
-    //     },
-    //     {
-    //       text: "Age"
-    //     },
-    //     {
-    //       text: "Sex",
-    //       info: [
-    //         { text: "sexCode" },
-    //         { text: "Mr/Mrs/Miss/Dr"},
-    //       ]
-    //     },
-    //     {
-    //       text: "Survived"
-    //     },
-    //   ]
-    // },
-
-    {
-          text: "Elisabeth Walton Allen",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "29",
-            },
-            {
-              text: "female",
-              info: [
-                { text: "1" },
-                { text: "Miss"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Helen Loraine Allison",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "2",
-            },
-            {
-              text: "female",
-              info: [
-                { text: "1" },
-                { text: "Miss"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "Hudson Joshua Creighton Allison",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "30",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "Bessie Waldo Daniels Allison",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "25",
-            },
-            {
-              text: "female",
-              info: [
-                { text: "1" },
-                { text: "Mrs"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "Hudson Trevor Allison",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "0.92",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Master"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Harry Anderson",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "47",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "Kornelia Theodosia Andrews",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "63",
-            },
-            {
-              text: "female",
-              info: [
-                { text: "1" },
-                { text: "Miss"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Thomas Andrews Jr",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "39",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "Charlotte Lamson Appleton",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "58",
-            },
-            {
-              text: "female",
-              info: [
-                { text: "1" },
-                { text: "Mrs"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Ramon Artagaveytia",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "71",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "John Jacob Astor",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "47",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Colonel"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "Madeleine Talmadge Force Astor",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "19",
-            },
-            {
-              text: "female",
-              info: [
-                { text: "1" },
-                { text: "Mrs"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Leontine Pauline Aubert",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "NA",
-            },
-            {
-              text: "female",
-              info: [
-                { text: "1" },
-                { text: "Mrs"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Algernon H Barkworth",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "NA",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "John D Baumann",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "NA",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "Helene DeLaudeniere Chaput Baxter",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "50",
-            },
-            {
-              text: "female",
-              info: [
-                { text: "1" },
-                { text: "Mrs"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Quigg Edmond Baxter",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "24",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "Thomson Beattie",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "36",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "Richard Leonard Beckwith",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "37",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Sallie Monypeny Beckwith",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "47",
-            },
-            {
-              text: "female",
-              info: [
-                { text: "1" },
-                { text: "Mrs"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Karl Howell Behr",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "26",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Jakob Birnbaum",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "25",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "0"
-            },
-          ]
-        },
-
-        {
-          text: "Dickinson H Bishop",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "25",
-            },
-            {
-              text: "male",
-              info: [
-                { text: "0" },
-                { text: "Mr"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        },
-
-        {
-          text: "Helen Walton Bishop",
-          info: [
-            {
-              text: "1st"
-            },
-            {
-              text: "19",
-            },
-            {
-              text: "female",
-              info: [
-                { text: "1" },
-                { text: "Mrs"},
-              ]
-            },
-            {
-              text: "1"
-            },
-          ]
-        }
-
-  ]
 
   this.victimsList = [
-    {Name: [{first: 'a', last: 'aa', maiden: 'aaa', title: 'mrs'}], Class: '1st', Age: 2, Gender: 'female', Survivor: 'no'},
+    {Class: '1st', Age: 29, Gender: 'female', Survivor: 'yes', Name: [{first: 'Elisabeth', last: 'Allen', maiden: 'Allen', title: 'Miss'}]},
 
-    {Name: [{first: 'b', last: 'bb', maiden: 'bbb', title: 'mr'}], Class: '2nd', Age: 19, Gender: 'male', Survivor: 'yes'},
+    {Class: '1st', Age: 2, Gender: 'female', Survivor: 'no', Name: [{first: 'Helen', last: 'Allison', maiden: 'Allison', title: 'Miss'}]},
 
-    {Name: [{first: 'c', last: 'cc', maiden: 'ccc', title: 'miss'}], Class: '3rd', Age: 46, Gender: 'female', Survivor: 'no'},
+    {Class: '1st', Age: 30, Gender: 'male', Survivor: 'no', Name: [{first: 'Hudson Joshua Creighton', last: 'Allison', maiden: 'NA', title: 'Mr'}]},
 
-    {Name: [{first: 'd', last: 'dd', maiden: 'ddd', title: 'master'}], Class: '1st', Age: 67, Gender: 'male', Survivor: 'yes'},
+    {Class: '1st', Age: 25, Gender: 'female', Survivor: 'no', Name: [{first: 'Bessie Waldo', last: 'Allison', maiden: 'Daniels', title: 'Mrs'}]},
 
-    {Name: [{first: 'e', last: 'ee', maiden: 'eee', title: 'miss'}], Class: '2nd', Age: 34, Gender: 'female', Survivor: 'no'},
+    {Class: '1st', Age: 0.92, Gender: 'male', Survivor: 'no', Name: [{first: 'Hudson Trevor', last: 'Allison', maiden: 'NA', title: 'Master'}]},
 
-    {Name: [{first: 'f', last: 'ff', maiden: 'fff', title: 'colonel'}], Class: '3rd', Age: 22, Gender: 'male', Survivor: 'yes'}
+    {Class: '1st', Age: 47, Gender: 'male', Survivor: 'yes', Name: [{first: 'Harry', last: 'Anderson', maiden: 'NA', title: 'Mr'}]},
+
+    {Class: '1st', Age: 63, Gender: 'female', Survivor: 'yes', Name: [{first: 'Kornelia Theodosia', last: 'Andrews', maiden: 'Andrews', title: 'Miss'}]},
+
+    {Class: '1st', Age: 39, Gender: 'male', Survivor: 'no', Name: [{first: 'Thomas', last: 'Andrews', maiden: 'NA', title: 'Jr'}]}
   ]
-
 
 app.filter('strictRecurrentFilter', function($filter) {
   var strictComparator; // Very strict comparator to get very strict results
@@ -624,7 +98,7 @@ app.filter('strictRecurrentFilter', function($filter) {
   this.getValuesFor = function(prop) {
     return (this.victimsList || []).map(function (victimsList) {
       return victimsList[prop]}).filter(function (value, idx, arr) {
-        return arr.indexOf(value) === idx; });
+        return arr.indexOf(value) === idx});
     }
 
     function noFilter(filterObj) {
@@ -632,8 +106,5 @@ app.filter('strictRecurrentFilter', function($filter) {
         return !filterObj[key];
       });
     }
-
-
-
 
 }]); //end of SunkController
